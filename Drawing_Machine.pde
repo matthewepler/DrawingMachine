@@ -67,7 +67,7 @@ float current_py = 0;
 
 // Place to keep all of our shapes
 //ArrayList<Arc> allArcs = new ArrayList();
-//ArrayList<Ellipse> allEllipses = new ArrayList();
+ArrayList<Elipse> allElipses = new ArrayList();
 ArrayList<Lyne> allLynes= new ArrayList();
 //ArrayList<Point> allPoints = new ArrayList();
 //ArrayList<Quad> allQuads = new ArrayList();
@@ -85,18 +85,23 @@ void setup(){
 void draw(){
   //scale(scalar);
 
-  // CREATE SHAPES HERE
+  // ****************************************** CREATE SHAPES HERE
   for(int i=0; i<width; i+=15){
     Rectangle r = new Rectangle(i, 20, 10, 10);
     allRectangles.add(r);
   }
   
-  for(int j=0; j<width; j+=20){
-   Lyne l = new Lyne(j, 40, j+20, 80);
+  for(int i=0; i<width; i+=20){
+   Lyne l = new Lyne(i, 40, i+20, 80);
    allLynes.add(l);
   }
   
-  // RENDER SHAPES HERE
+  for(int i=0; i<width; i+=50){
+   Elipse e = new Elipse(i, 200, 100, 200);
+   allElipses.add(e); 
+  }
+  
+  // *******************************************RENDER SHAPES HERE
   for(Rectangle r:allRectangles){
    r.render(printing, done); 
   }
@@ -105,7 +110,10 @@ void draw(){
    l.render(printing, done); 
   }
   
-  // render shapes here
+  for(Elipse e:allElipses){
+   e.render(printing, done); 
+  }
+  
   
   noLoop();
 }
