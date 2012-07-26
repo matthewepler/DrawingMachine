@@ -66,21 +66,46 @@ float current_px = 0;       // where are we?
 float current_py = 0;
 
 // Place to keep all of our shapes
-//ArrayList<Path> allPaths = new ArrayList();
-//ArrayList<Rectangle> allRectangles = new ArrayList();
-//ArrayList<Elipse> allElipses = new ArrayList();
-//ArrayList<Lyne> allLynes = new ArrayList();
-
+//ArrayList<Arc> allArcs = new ArrayList();
+//ArrayList<Ellipse> allEllipses = new ArrayList();
+ArrayList<Lyne> allLynes= new ArrayList();
+//ArrayList<Point> allPoints = new ArrayList();
+//ArrayList<Quad> allQuads = new ArrayList();
+ArrayList<Rectangle> allRectangles = new ArrayList();
+//ArrayList<Tri> allTris = new ArrayList();
 
 
 void setup(){
   output = createWriter("drawing_1.txt");   
-  size(plotter_width_px, plotter_height_px);
+  size(int(plotter_width_px*scalar), int(plotter_height_px*scalar));
   background(255);  
-  
 
 }
 
 void draw(){
-  scale(scalar);
+  //scale(scalar);
+
+  // CREATE SHAPES HERE
+  for(int i=0; i<width; i+=15){
+    Rectangle r = new Rectangle(i, 20, 10, 10);
+    allRectangles.add(r);
+  }
+  
+  for(int j=0; j<width; j+=20){
+   Lyne l = new Lyne(j, 40, j+20, 80);
+   allLynes.add(l);
+  }
+  
+  // RENDER SHAPES HERE
+  for(Rectangle r:allRectangles){
+   r.render(printing, done); 
+  }
+  
+  for(Lyne l:allLynes){
+   l.render(printing, done); 
+  }
+  
+  // render shapes here
+  
+  noLoop();
 }
