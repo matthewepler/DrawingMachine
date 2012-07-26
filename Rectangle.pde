@@ -10,7 +10,6 @@ class Rectangle {
   }
 
   void render() {
-
       stroke(0);
       noFill();
       rect(x, y, rectWidth, rectHeight);
