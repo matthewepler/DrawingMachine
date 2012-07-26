@@ -44,13 +44,13 @@ in here and verify it's working correctly. Sorry y'all.
 
 */
 
+boolean render = false;     // toggles rendering to screen
 
 float scalar = 0.20;   // change this to fit all your drawing on the screen. All other settings should
                       // be for the actual dimensions of the plotter.
 
 PrintWriter output;  // our output text file that will be pasted into Arduino
-boolean printing = false;  // marks the current shape being printed with color red.
-boolean done = false;      // marks any shape already drawn with color blue. Remaining shapes appear black.
+
 
 // FILL THESE IN 
 float plotter_width_in = 50;      // effective drawing dimensions in inches
@@ -77,8 +77,15 @@ ArrayList<Rectangle> allRectangles = new ArrayList();
 
 void setup(){
   output = createWriter("drawing_1.txt");   
+  if(render){
   size(int(plotter_width_px*scalar), int(plotter_height_px*scalar));
-  background(255);  
+  } else {
+   background(255); 
+   size(100, 100);
+   fill(0);
+   text("render OFF", 20, 50);
+  }
+   
 
 }
 
@@ -102,16 +109,18 @@ void draw(){
   }
   
   // *******************************************RENDER SHAPES HERE
+  if(render){
   for(Rectangle r:allRectangles){
-   r.render(printing, done); 
+   r.render(); 
   }
   
   for(Lyne l:allLynes){
-   l.render(printing, done); 
+   l.render(); 
   }
   
   for(Elipse e:allElipses){
-   e.render(printing, done); 
+   e.render(); 
+  }
   }
   
   
