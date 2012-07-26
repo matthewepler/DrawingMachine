@@ -72,7 +72,8 @@ ArrayList<Lyne> allLynes= new ArrayList();
 ArrayList<Poynt> allPoynts = new ArrayList();
 ArrayList<Quadri> allQuadris = new ArrayList();
 ArrayList<Rectangle> allRectangles = new ArrayList();
-//ArrayList<Tri> allTris = new ArrayList();
+ArrayList<Tri> allTris = new ArrayList();
+//ArrayList<Curvve> allCurvvs = new ArrayList();
 
 
 void setup() {
@@ -90,31 +91,37 @@ void setup() {
 
 void draw() {
   //scale(scalar);
+  int limit = 500;
 
   // ****************************************** CREATE SHAPES HERE
-  for (int i=0; i<width; i+=15) {
+  for (int i=0; i<limit; i+=15) {
     Rectangle r = new Rectangle(i, 20, 10, 10);
     allRectangles.add(r);
   }
 
-  for (int i=0; i<width; i+=20) {
+  for (int i=0; i<limit; i+=20) {
     Lyne l = new Lyne(i, 40, i+20, 80);
     allLynes.add(l);
   }
 
-  for (int i=0; i<width; i+=50) {
+  for (int i=0; i<limit; i+=50) {
     Ellypse e = new Ellypse(i, 200, 100, 200);
     allEllypses.add(e);
   }
 
-  for (int i=0; i<width; i+=60) {
+  for (int i=0; i<limit; i+=60) {
     Poynt p = new Poynt(i, 335);
     allPoynts.add(p);
   }
   
-  for (int i=0; i<width; i+=90){
+  for (int i=0; i<limit; i+=90){
    Quadri q = new Quadri(i, 420, i+30, 370, i+80, 470, i, 600); 
    allQuadris.add(q);
+  }
+  
+  for (int i=25; i<limit; i+= 100){
+   Tri t = new Tri(i, 625, i-50, 750, i+50, 750);
+   allTris.add(t);
   }
 
 
@@ -139,6 +146,10 @@ void draw() {
     
     for(Quadri q:allQuadris){
      q.render(); 
+    }
+    
+    for(Tri t:allTris){
+     t.render(); 
     }
   }
 
