@@ -66,14 +66,14 @@ float current_px = 0;       // where are we?
 float current_py = 0;
 
 // Place to keep all of our shapes
-//ArrayList<Arc> allArcs = new ArrayList();
+ArrayList<Arcc> allArccs = new ArrayList();
 ArrayList<Ellypse> allEllypses = new ArrayList();
 ArrayList<Lyne> allLynes= new ArrayList();
 ArrayList<Poynt> allPoynts = new ArrayList();
 ArrayList<Quadri> allQuadris = new ArrayList();
 ArrayList<Rectangle> allRectangles = new ArrayList();
 ArrayList<Tri> allTris = new ArrayList();
-//ArrayList<Curvve> allCurvvs = new ArrayList();
+ArrayList<Curvve> allCurvvs = new ArrayList();
 
 
 void setup() {
@@ -123,6 +123,11 @@ void draw() {
    Tri t = new Tri(i, 625, i-50, 750, i+50, 750);
    allTris.add(t);
   }
+  
+  for (int i=20; i<limit; i+=60){
+   Arcc a = new Arcc(i, 800, 45, 45, PI, 2*PI);
+   allArccs.add(a); 
+  }
 
 
 
@@ -150,6 +155,10 @@ void draw() {
     
     for(Tri t:allTris){
      t.render(); 
+    }
+    
+    for(Arcc a:allArccs){
+     a.render(); 
     }
   }
 
